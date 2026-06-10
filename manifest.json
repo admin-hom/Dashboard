@@ -1,11 +1,12 @@
 {
   "name": "My Apps - Rahmat Nobil",
   "short_name": "My Apps",
-  "description": "Dashboard aplikasi Rahmat Nobil",
-  "start_url": "/index.html",
+  "description": "Dashboard aplikasi Rahmat Nobil, S.Kom.",
+  "start_url": "/Dashboard/index.html",
+  "scope": "/Dashboard/",
   "display": "standalone",
-  "background_color": "#f4f6fb",
-  "theme_color": "#2471a3",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
   "orientation": "portrait",
   "icons": [
     {

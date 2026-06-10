@@ -2,210 +2,247 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#f4f6fb" id="metaTheme">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#0f172a" id="metaTheme">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="My Apps">
 <meta name="description" content="Dashboard aplikasi Rahmat Nobil">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192.png">
 <title>My Apps</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: system-ui, sans-serif; }
-  .dashboard { min-height: 100vh; padding: 1.5rem 1rem 2rem; transition: background 0.3s; }
-  .dashboard.light { background: #f4f6fb; color: #1a1f2e; }
-  .dashboard.dark { background: #141824; color: #e8ecf4; }
-  .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.75rem; }
-  .header-left h1 { font-size: 18px; font-weight: 500; letter-spacing: -0.3px; }
-  .header-left p { font-size: 12px; margin-top: 2px; opacity: 0.55; }
-  .toggle { display: flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 20px; border: 0.5px solid; cursor: pointer; font-size: 12px; transition: all 0.2s; background: none; }
-  .light .toggle { border-color: rgba(0,0,0,0.08); background: #e8ecf4; color: #1a1f2e; }
-  .dark .toggle { border-color: rgba(255,255,255,0.07); background: #2a3044; color: #e8ecf4; }
-  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-  .app-card { border-radius: 18px; padding: 1.1rem 1rem 1rem; border: 0.5px solid; cursor: pointer; transition: transform 0.15s; text-decoration: none; display: block; position: relative; overflow: hidden; }
-  .app-card:active { transform: scale(0.97); }
-  .light .app-card { background: #ffffff; border-color: rgba(0,0,0,0.08); color: #1a1f2e; }
-  .dark .app-card { background: #1e2433; border-color: rgba(255,255,255,0.07); color: #e8ecf4; }
-  .card-accent { position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 18px 18px 0 0; }
-  .card-logo { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; margin-top: 4px; }
-  .card-name { font-size: 13px; font-weight: 500; line-height: 1.3; margin-bottom: 4px; }
-  .card-desc { font-size: 11px; opacity: 0.5; line-height: 1.4; }
-  .card-arrow { position: absolute; top: 14px; right: 12px; font-size: 14px; opacity: 0.25; }
-  .footer { text-align: center; margin-top: 2rem; font-size: 11px; opacity: 0.3; }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;-webkit-tap-highlight-color:transparent}
 
-  .install-banner {
-    display: none;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 10px 14px;
-    border-radius: 14px;
-    margin-bottom: 1.25rem;
-    font-size: 12px;
-    border: 0.5px solid;
-  }
-  .light .install-banner { background: #eaf3fb; border-color: rgba(36,113,163,0.2); color: #1a1f2e; }
-  .dark .install-banner { background: #1a2a3a; border-color: rgba(84,153,201,0.2); color: #e8ecf4; }
-  .install-banner.show { display: flex; }
-  .install-btn {
-    padding: 5px 12px;
-    border-radius: 20px;
-    border: none;
-    background: #2471a3;
-    color: white;
-    font-size: 11px;
-    cursor: pointer;
-    white-space: nowrap;
-  }
-  .install-dismiss {
-    background: none;
-    border: none;
-    cursor: pointer;
-    opacity: 0.4;
-    font-size: 16px;
-    color: inherit;
-    padding: 0 2px;
-  }
+.wrap{min-height:100vh;transition:background .4s,color .4s}
+.wrap.light{background:#0f172a;color:#fff}
+.wrap.dark{background:#f0f4ff;color:#0f172a}
+
+.hero{padding:3rem 1.25rem 1.75rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.light .hero-bg{background:#0f172a}
+.dark .hero-bg{background:#e8edf8}
+
+.blob{position:absolute;border-radius:50%;filter:blur(40px);opacity:0.35}
+.blob1{width:180px;height:180px;top:-40px;right:-30px}
+.blob2{width:120px;height:120px;bottom:0px;left:20px;opacity:0.2}
+.light .blob1{background:#3b6bde}
+.light .blob2{background:#c0392b}
+.dark .blob1{background:#3b6bde}
+.dark .blob2{background:#c0392b}
+
+.hero-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.75rem;position:relative;z-index:1}
+.avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.25)}
+.dark .avatar{background:rgba(15,23,42,0.15);color:#0f172a;border-color:rgba(15,23,42,0.2)}
+
+.toggle-pill{display:flex;align-items:center;gap:5px;padding:6px 12px;border-radius:20px;border:1.5px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.9);font-size:11px;font-weight:500;cursor:pointer;font-family:inherit}
+.dark .toggle-pill{border-color:rgba(15,23,42,0.2);background:rgba(15,23,42,0.08);color:rgba(15,23,42,0.8)}
+
+.hero-title{position:relative;z-index:1;margin-bottom:0.25rem}
+.hero-title h1{font-size:26px;font-weight:700;color:#fff;letter-spacing:-0.5px;line-height:1.2}
+.dark .hero-title h1{color:#0f172a}
+.hero-title p{font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px;font-weight:400}
+.dark .hero-title p{color:rgba(15,23,42,0.45)}
+
+.badge-row{display:flex;gap:8px;margin-top:1rem;position:relative;z-index:1}
+.badge{padding:4px 10px;border-radius:20px;font-size:10px;font-weight:600;letter-spacing:0.3px}
+.badge-apps{background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9)}
+.badge-live{background:#22c55e22;color:#4ade80;border:1px solid #22c55e44}
+.dark .badge-apps{background:rgba(15,23,42,0.1);color:rgba(15,23,42,0.7)}
+.dark .badge-live{background:#16a34a18;color:#16a34a;border-color:#16a34a33}
+
+.section{padding:0 1.25rem 2rem}
+.section-label{font-size:10px;font-weight:600;letter-spacing:1px;margin-bottom:1rem;margin-top:1.5rem;text-transform:uppercase}
+.light .section-label{color:rgba(255,255,255,0.35)}
+.dark .section-label{color:rgba(15,23,42,0.35)}
+
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+
+.card{border-radius:20px;padding:1.1rem 1rem 1rem;text-decoration:none;display:block;position:relative;overflow:hidden;transition:transform .15s;cursor:pointer}
+.card:active{transform:scale(0.96)}
+.light .card{background:#1e2d47;border:1px solid rgba(255,255,255,0.07)}
+.dark .card{background:#fff;border:1px solid rgba(15,23,42,0.08)}
+
+.card-glow{position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;opacity:0.15;pointer-events:none}
+.card-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.card-name{font-size:13px;font-weight:600;line-height:1.3;margin-bottom:3px}
+.light .card-name{color:#f1f5f9}
+.dark .card-name{color:#0f172a}
+.card-desc{font-size:10px;line-height:1.4}
+.light .card-desc{color:rgba(241,245,249,0.4)}
+.dark .card-desc{color:rgba(15,23,42,0.4)}
+.card-arrow{position:absolute;top:12px;right:12px;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px}
+.light .card-arrow{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.5)}
+.dark .card-arrow{background:rgba(15,23,42,0.06);color:rgba(15,23,42,0.4)}
+.card-tag{display:inline-block;margin-top:10px;padding:2px 8px;border-radius:10px;font-size:9px;font-weight:600;letter-spacing:0.3px}
+
+.install-banner{display:none;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;border-radius:14px;margin:0 1.25rem 1rem;font-size:12px;border:1px solid}
+.install-banner.show{display:flex}
+.light .install-banner{background:rgba(59,130,246,0.1);border-color:rgba(59,130,246,0.2);color:rgba(255,255,255,0.85)}
+.dark .install-banner{background:rgba(59,130,246,0.07);border-color:rgba(59,130,246,0.15);color:#0f172a}
+.install-btn{padding:5px 12px;border-radius:20px;border:none;background:#3b82f6;color:white;font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap}
+.install-dismiss{background:none;border:none;cursor:pointer;opacity:0.4;font-size:16px;color:inherit;padding:0 2px}
+
+.footer-note{text-align:center;padding:0 1.25rem 2.5rem;font-size:10px}
+.light .footer-note{color:rgba(255,255,255,0.2)}
+.dark .footer-note{color:rgba(15,23,42,0.2)}
 </style>
 </head>
 <body>
-<div class="dashboard light" id="dash">
-  <div class="header">
-    <div class="header-left">
-      <h1>My Apps</h1>
-      <p>4 aplikasi aktif</p>
+<div class="wrap light" id="wrap">
+  <div class="hero">
+    <div class="hero-bg">
+      <div class="blob blob1"></div>
+      <div class="blob blob2"></div>
     </div>
-    <button class="toggle" onclick="toggleTheme()">
-      <i class="ti ti-sun" id="themeIcon" aria-hidden="true"></i>
-      <span id="themeLabel">Light</span>
-    </button>
+    <div class="hero-top">
+      <div class="avatar">RN</div>
+      <button class="toggle-pill" onclick="toggleTheme()">
+        <i class="ti ti-sun" id="themeIcon" style="font-size:13px" aria-hidden="true"></i>
+        <span id="themeLabel">Light</span>
+      </button>
+    </div>
+    <div class="hero-title">
+      <h1>My Apps</h1>
+      <p>Rahmat Nobil, S.Kom.</p>
+    </div>
+    <div class="badge-row">
+      <span class="badge badge-apps">4 Aplikasi</span>
+      <span class="badge badge-live">&#9679; Live</span>
+    </div>
   </div>
 
   <div class="install-banner" id="installBanner">
-    <span>📲 Tambah ke homescreen</span>
-    <div style="display:flex;gap:6px;align-items:center;">
+    <span>&#128242; Tambah ke homescreen</span>
+    <div style="display:flex;gap:6px;align-items:center">
       <button class="install-btn" onclick="installApp()">Install</button>
-      <button class="install-dismiss" onclick="dismissInstall()">✕</button>
+      <button class="install-dismiss" onclick="dismissInstall()">&#10005;</button>
     </div>
   </div>
 
-  <div class="grid">
-    <a class="app-card" href="https://absenkemenagllg.blogspot.com" target="_blank">
-      <div class="card-accent" style="background: linear-gradient(90deg, #c0392b, #e74c3c);"></div>
-      <div class="card-logo" style="background: #fdecea;">
-        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-          <rect x="3" y="6" width="20" height="16" rx="3" fill="#c0392b" opacity="0.15"/>
-          <rect x="3" y="6" width="20" height="16" rx="3" stroke="#c0392b" stroke-width="1.5"/>
-          <path d="M8 12h10M8 16h6" stroke="#c0392b" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M9 6V4M17 6V4" stroke="#c0392b" stroke-width="1.5" stroke-linecap="round"/>
-          <circle cx="19" cy="19" r="4" fill="#c0392b"/>
-          <path d="M19 17v2l1 1" stroke="white" stroke-width="1" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <div class="card-name">Absen Kemenag</div>
-      <div class="card-desc">Presensi & kehadiran</div>
-      <i class="ti ti-arrow-up-right card-arrow" aria-hidden="true"></i>
-    </a>
+  <div class="section">
+    <div class="section-label">Aplikasi saya</div>
+    <div class="grid">
 
-    <a class="app-card" href="https://keuangan-kita.github.io/dompet-online/" target="_blank">
-      <div class="card-accent" style="background: linear-gradient(90deg, #2471a3, #5499c9);"></div>
-      <div class="card-logo" style="background: #eaf3fb;">
-        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-          <rect x="3" y="5" width="20" height="16" rx="3" fill="#2471a3" opacity="0.12"/>
-          <rect x="3" y="5" width="20" height="16" rx="3" stroke="#2471a3" stroke-width="1.5"/>
-          <path d="M3 10h20" stroke="#2471a3" stroke-width="1.5"/>
-          <rect x="6" y="13" width="5" height="3" rx="1" fill="#2471a3" opacity="0.5"/>
-          <circle cx="18" cy="18" r="5" fill="#2471a3"/>
-          <path d="M18 15.5v5M15.5 18h5" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <div class="card-name">Dompetku</div>
-      <div class="card-desc">Keuangan pribadi</div>
-      <i class="ti ti-arrow-up-right card-arrow" aria-hidden="true"></i>
-    </a>
+      <a class="card" href="https://absenkemenagllg.blogspot.com" target="_blank">
+        <div class="card-glow" style="background:#ef4444"></div>
+        <div class="card-arrow"><i class="ti ti-arrow-up-right" aria-hidden="true"></i></div>
+        <div class="card-icon" style="background:rgba(239,68,68,0.15)">
+          <svg width="22" height="22" viewBox="0 0 26 26" fill="none">
+            <rect x="3" y="6" width="20" height="16" rx="3" stroke="#ef4444" stroke-width="1.8"/>
+            <path d="M8 12h10M8 16h6" stroke="#ef4444" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M9 6V4M17 6V4" stroke="#ef4444" stroke-width="1.6" stroke-linecap="round"/>
+            <circle cx="19" cy="19" r="4" fill="#ef4444"/>
+            <path d="M19 17v2l1 1" stroke="white" stroke-width="1.1" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="card-name">Absen Kemenag</div>
+        <div class="card-desc">Presensi & kehadiran</div>
+        <div class="card-tag" style="background:rgba(239,68,68,0.15);color:#ef4444">Blogspot</div>
+      </a>
 
-    <a class="app-card" href="https://script.google.com/macros/s/AKfycbwq6AW_PJtKd_qlAXA14OrlbpzfR0j6rWR8v473YVglYwgeHxiRBzLMyOOvCuLC6Fa4zA/exec" target="_blank">
-      <div class="card-accent" style="background: linear-gradient(90deg, #884ea0, #a569bd);"></div>
-      <div class="card-logo" style="background: #f5eef8;">
-        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-          <rect x="2" y="9" width="22" height="14" rx="3" fill="#884ea0" opacity="0.12"/>
-          <rect x="2" y="9" width="22" height="14" rx="3" stroke="#884ea0" stroke-width="1.5"/>
-          <path d="M9 9V7a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="#884ea0" stroke-width="1.5"/>
-          <circle cx="13" cy="16" r="3.5" fill="#884ea0" opacity="0.2"/>
-          <circle cx="13" cy="16" r="3.5" stroke="#884ea0" stroke-width="1.5"/>
-          <circle cx="13" cy="16" r="1.2" fill="#884ea0"/>
-          <rect x="18" y="11" width="3" height="2" rx="0.5" fill="#884ea0" opacity="0.5"/>
-        </svg>
-      </div>
-      <div class="card-name">House of Motret</div>
-      <div class="card-desc">Admin foto klien</div>
-      <i class="ti ti-arrow-up-right card-arrow" aria-hidden="true"></i>
-    </a>
+      <a class="card" href="https://keuangan-kita.github.io/dompet-online/" target="_blank">
+        <div class="card-glow" style="background:#3b82f6"></div>
+        <div class="card-arrow"><i class="ti ti-arrow-up-right" aria-hidden="true"></i></div>
+        <div class="card-icon" style="background:rgba(59,130,246,0.15)">
+          <svg width="22" height="22" viewBox="0 0 26 26" fill="none">
+            <rect x="3" y="5" width="20" height="16" rx="3" stroke="#3b82f6" stroke-width="1.8"/>
+            <path d="M3 10h20" stroke="#3b82f6" stroke-width="1.6"/>
+            <rect x="6" y="13" width="5" height="3" rx="1" fill="#3b82f6" opacity="0.6"/>
+            <circle cx="18" cy="18" r="4.5" fill="#3b82f6"/>
+            <path d="M18 15.5v5M15.5 18h5" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="card-name">Dompetku</div>
+        <div class="card-desc">Keuangan pribadi</div>
+        <div class="card-tag" style="background:rgba(59,130,246,0.15);color:#3b82f6">Firebase</div>
+      </a>
 
-    <a class="app-card" href="https://siperba-web.vercel.app" target="_blank">
-      <div class="card-accent" style="background: linear-gradient(90deg, #1a6b4a, #27ae60);"></div>
-      <div class="card-logo" style="background: #eafaf1;">
-        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-          <rect x="4" y="3" width="18" height="20" rx="3" fill="#1a6b4a" opacity="0.1"/>
-          <rect x="4" y="3" width="18" height="20" rx="3" stroke="#1a6b4a" stroke-width="1.5"/>
-          <path d="M8 9h10M8 13h10M8 17h6" stroke="#1a6b4a" stroke-width="1.3" stroke-linecap="round"/>
-          <circle cx="20" cy="20" r="4" fill="#1a6b4a"/>
-          <path d="M18.5 20l1 1 2-2" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <div class="card-name">Siperba</div>
-      <div class="card-desc">Permintaan barang</div>
-      <i class="ti ti-arrow-up-right card-arrow" aria-hidden="true"></i>
-    </a>
+      <a class="card" href="https://script.google.com/macros/s/AKfycbwq6AW_PJtKd_qlAXA14OrlbpzfR0j6rWR8v473YVglYwgeHxiRBzLMyOOvCuLC6Fa4zA/exec" target="_blank">
+        <div class="card-glow" style="background:#a855f7"></div>
+        <div class="card-arrow"><i class="ti ti-arrow-up-right" aria-hidden="true"></i></div>
+        <div class="card-icon" style="background:rgba(168,85,247,0.15)">
+          <svg width="22" height="22" viewBox="0 0 26 26" fill="none">
+            <rect x="2" y="9" width="22" height="14" rx="3" stroke="#a855f7" stroke-width="1.8"/>
+            <path d="M9 9V7a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="#a855f7" stroke-width="1.6"/>
+            <circle cx="13" cy="16" r="3.5" stroke="#a855f7" stroke-width="1.5"/>
+            <circle cx="13" cy="16" r="1.2" fill="#a855f7"/>
+            <rect x="18" y="11" width="3" height="2" rx="0.5" fill="#a855f7" opacity="0.6"/>
+          </svg>
+        </div>
+        <div class="card-name">House of Motret</div>
+        <div class="card-desc">Admin foto klien</div>
+        <div class="card-tag" style="background:rgba(168,85,247,0.15);color:#a855f7">Apps Script</div>
+      </a>
+
+      <a class="card" href="https://siperba-web.vercel.app" target="_blank">
+        <div class="card-glow" style="background:#22c55e"></div>
+        <div class="card-arrow"><i class="ti ti-arrow-up-right" aria-hidden="true"></i></div>
+        <div class="card-icon" style="background:rgba(34,197,94,0.15)">
+          <svg width="22" height="22" viewBox="0 0 26 26" fill="none">
+            <rect x="4" y="3" width="18" height="20" rx="3" stroke="#22c55e" stroke-width="1.8"/>
+            <path d="M8 9h10M8 13h10M8 17h6" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="20" cy="20" r="4" fill="#22c55e"/>
+            <path d="M18.5 20l1 1 2-2" stroke="white" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="card-name">Siperba</div>
+        <div class="card-desc">Permintaan barang</div>
+        <div class="card-tag" style="background:rgba(34,197,94,0.15);color:#22c55e">Vercel</div>
+      </a>
+
+    </div>
   </div>
 
-  <div class="footer">tap kartu untuk buka aplikasi</div>
+  <div class="footer-note">tap kartu untuk buka aplikasi</div>
 </div>
 
 <script>
-  let isDark = false;
-  let deferredPrompt = null;
+let isDark = false;
+let deferredPrompt = null;
 
-  function toggleTheme() {
-    isDark = !isDark;
-    document.getElementById('dash').className = 'dashboard ' + (isDark ? 'dark' : 'light');
-    document.getElementById('themeIcon').className = isDark ? 'ti ti-moon' : 'ti ti-sun';
-    document.getElementById('themeLabel').textContent = isDark ? 'Dark' : 'Light';
-    document.getElementById('metaTheme').content = isDark ? '#141824' : '#f4f6fb';
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+function toggleTheme(){
+  isDark = !isDark;
+  document.getElementById('wrap').className = 'wrap ' + (isDark ? 'dark' : 'light');
+  document.getElementById('themeIcon').className = isDark ? 'ti ti-moon' : 'ti ti-sun';
+  document.getElementById('themeLabel').textContent = isDark ? 'Dark' : 'Light';
+  document.getElementById('metaTheme').content = isDark ? '#f0f4ff' : '#0f172a';
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+}
+
+function installApp(){
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(()=>{
+      deferredPrompt = null;
+      document.getElementById('installBanner').classList.remove('show');
+    });
   }
+}
 
-  function installApp() {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then(() => {
-        deferredPrompt = null;
-        document.getElementById('installBanner').classList.remove('show');
-      });
-    }
+function dismissInstall(){
+  document.getElementById('installBanner').classList.remove('show');
+  localStorage.setItem('installDismissed','1');
+}
+
+window.addEventListener('beforeinstallprompt', e=>{
+  e.preventDefault();
+  deferredPrompt = e;
+  if(!localStorage.getItem('installDismissed')){
+    document.getElementById('installBanner').classList.add('show');
   }
+});
 
-  function dismissInstall() {
-    document.getElementById('installBanner').classList.remove('show');
-    localStorage.setItem('installDismissed', '1');
-  }
+if(localStorage.getItem('theme') === 'dark') toggleTheme();
 
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    if (!localStorage.getItem('installDismissed')) {
-      document.getElementById('installBanner').classList.add('show');
-    }
-  });
-
-  if (localStorage.getItem('theme') === 'dark') toggleTheme();
-
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js');
-  }
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js');
+}
 </script>
 </body>
 </html>
