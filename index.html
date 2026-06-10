@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Apps</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, sans-serif; }
+  .dashboard { min-height: 100vh; padding: 1.5rem 1rem 2rem; transition: background 0.3s; }
+  .dashboard.light { background: #f4f6fb; color: #1a1f2e; }
+  .dashboard.dark { background: #141824; color: #e8ecf4; }
+  .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.75rem; }
+  .header-left h1 { font-size: 18px; font-weight: 500; letter-spacing: -0.3px; }
+  .header-left p { font-size: 12px; margin-top: 2px; opacity: 0.55; }
+  .toggle { display: flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 20px; border: 0.5px solid; cursor: pointer; font-size: 12px; transition: all 0.2s; background: none; }
+  .light .toggle { border-color: rgba(0,0,0,0.08); background: #e8ecf4; color: #1a1f2e; }
+  .dark .toggle { border-color: rgba(255,255,255,0.07); background: #2a3044; color: #e8ecf4; }
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .app-card { border-radius: 18px; padding: 1.1rem 1rem 1rem; border: 0.5px solid; cursor: pointer; transition: transform 0.15s; text-decoration: none; display: block; position: relative; overflow: hidden; }
+  .app-card:active { transform: scale(0.97); }
+  .light .app-card { background: #ffffff; border-color: rgba(0,0,0,0.08); color: #1a1f2e; }
+  .dark .app-card { background: #1e2433; border-color: rgba(255,255,255,0.07); color: #e8ecf4; }
+  .card-accent { position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 18px 18px 0 0; }
+  .card-logo { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; margin-top: 4px; }
+  .card-name { font-size: 13px; font-weight: 500; line-height: 1.3; margin-bottom: 4px; }
+  .card-desc { font-size: 11px; opacity: 0.5; line-height: 1.4; }
+  .card-arrow { position: absolute; top: 14px; right: 12px; font-size: 14px; opacity: 0.25; }
+  .footer { text-align: center; margin-top: 2rem; font-size: 11px; opacity: 0.3; }
+</style>
+</head>
+<body>
+<div class="dashboard light" id="dash">
+  <div class="header">
+    <div class="header-left">
+      <h1>My Apps</h1>
+      <p>4 aplikasi aktif</p>
+    </div>
+    <button class="toggle" onclick="toggleTheme()">
+      <i class="ti ti-sun" id="themeIcon"></i>
+      <span id="themeLabel">Light</span>
+    </button>
+  </div>
+
+  <div class="grid">
+    <a class="app-card" href="https://absenkemenagllg.blogspot.com" target="_blank">
+      <div class="card-accent" style="background: linear-gradient(90deg, #c0392b, #e74c3c);"></div>
+      <div class="card-logo" style="background: #fdecea;">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+          <rect x="3" y="6" width="20" height="16" rx="3" fill="#c0392b" opacity="0.15"/>
+          <rect x="3" y="6" width="20" height="16" rx="3" stroke="#c0392b" stroke-width="1.5"/>
+          <path d="M8 12h10M8 16h6" stroke="#c0392b" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M9 6V4M17 6V4" stroke="#c0392b" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="19" cy="19" r="4" fill="#c0392b"/>
+          <path d="M19 17v2l1 1" stroke="white" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="card-name">Absen Kemenag</div>
+      <div class="card-desc">Presensi & kehadiran</div>
+      <i class="ti ti-arrow-up-right card-arrow"></i>
+    </a>
+
+    <a class="app-card" href="https://keuangan-kita.github.io" target="_blank">
+      <div class="card-accent" style="background: linear-gradient(90deg, #2471a3, #5499c9);"></div>
+      <div class="card-logo" style="background: #eaf3fb;">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+          <rect x="3" y="5" width="20" height="16" rx="3" fill="#2471a3" opacity="0.12"/>
+          <rect x="3" y="5" width="20" height="16" rx="3" stroke="#2471a3" stroke-width="1.5"/>
+          <path d="M3 10h20" stroke="#2471a3" stroke-width="1.5"/>
+          <rect x="6" y="13" width="5" height="3" rx="1" fill="#2471a3" opacity="0.5"/>
+          <circle cx="18" cy="18" r="5" fill="#2471a3"/>
+          <path d="M18 15.5v5M15.5 18h5" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="card-name">Dompetku</div>
+      <div class="card-desc">Keuangan pribadi</div>
+      <i class="ti ti-arrow-up-right card-arrow"></i>
+    </a>
+
+    <a class="app-card" href="https://script.google.com/macros/s/AKfycbwq6AW_PJtKd_qlAXA14OrlbpzfR0j6rWR8v473YVglYwgeHxiRBzLMyOOvCuLC6Fa4zA/exec" target="_blank">
+      <div class="card-accent" style="background: linear-gradient(90deg, #884ea0, #a569bd);"></div>
+      <div class="card-logo" style="background: #f5eef8;">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+          <rect x="2" y="9" width="22" height="14" rx="3" fill="#884ea0" opacity="0.12"/>
+          <rect x="2" y="9" width="22" height="14" rx="3" stroke="#884ea0" stroke-width="1.5"/>
+          <path d="M9 9V7a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="#884ea0" stroke-width="1.5"/>
+          <circle cx="13" cy="16" r="3.5" fill="#884ea0" opacity="0.2"/>
+          <circle cx="13" cy="16" r="3.5" stroke="#884ea0" stroke-width="1.5"/>
+          <circle cx="13" cy="16" r="1.2" fill="#884ea0"/>
+          <rect x="18" y="11" width="3" height="2" rx="0.5" fill="#884ea0" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="card-name">House of Motret</div>
+      <div class="card-desc">Admin foto klien</div>
+      <i class="ti ti-arrow-up-right card-arrow"></i>
+    </a>
+
+    <a class="app-card" href="https://siperba-web.vercel.app" target="_blank">
+      <div class="card-accent" style="background: linear-gradient(90deg, #1a6b4a, #27ae60);"></div>
+      <div class="card-logo" style="background: #eafaf1;">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+          <rect x="4" y="3" width="18" height="20" rx="3" fill="#1a6b4a" opacity="0.1"/>
+          <rect x="4" y="3" width="18" height="20" rx="3" stroke="#1a6b4a" stroke-width="1.5"/>
+          <path d="M8 9h10M8 13h10M8 17h6" stroke="#1a6b4a" stroke-width="1.3" stroke-linecap="round"/>
+          <circle cx="20" cy="20" r="4" fill="#1a6b4a"/>
+          <path d="M18.5 20l1 1 2-2" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="card-name">Siperba</div>
+      <div class="card-desc">Permintaan barang</div>
+      <i class="ti ti-arrow-up-right card-arrow"></i>
+    </a>
+  </div>
+
+  <div class="footer">tap kartu untuk buka aplikasi</div>
+</div>
+
+<script>
+  let isDark = false;
+  function toggleTheme() {
+    isDark = !isDark;
+    document.getElementById('dash').className = 'dashboard ' + (isDark ? 'dark' : 'light');
+    document.getElementById('themeIcon').className = isDark ? 'ti ti-moon' : 'ti ti-sun';
+    document.getElementById('themeLabel').textContent = isDark ? 'Dark' : 'Light';
+  }
+</script>
+</body>
+</html>
