@@ -2,7 +2,7 @@
   "name": "My Apps - Rahmat Nobil",
   "short_name": "My Apps",
   "description": "Dashboard aplikasi Rahmat Nobil, S.Kom.",
-  "start_url": "/Dashboard/index.html",
+  "start_url": "https://admin-hom.github.io/Dashboard/",
   "scope": "/Dashboard/",
   "display": "standalone",
   "background_color": "#0f172a",
